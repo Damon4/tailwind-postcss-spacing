@@ -2,9 +2,27 @@
   "name": "tailwind-postcss-spacing",
   "version": "1.0.0",
   "description": "PostCSS plugin for scalable design systems - converts px/rem to calc() expressions with CSS custom properties. Perfect for Tailwind CSS projects requiring dynamic spacing control.",
-  "main": "index.js",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
   "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.mjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "index.js",
+    "README.md",
+    "CHANGELOG.md"
+  ],
   "scripts": {
+    "build": "rollup -c",
+    "prebuild": "rm -rf dist",
+    "prepublishOnly": "npm run build && npm test",
     "test": "jest",
     "test:watch": "jest --watch",
     "lint": "eslint .",
@@ -19,7 +37,7 @@
     "css-variables",
     "custom-properties",
     "px",
-    "rem", 
+    "rem",
     "spacing",
     "calc",
     "design-system",
@@ -43,9 +61,11 @@
   "devDependencies": {
     "@babel/core": "^7.28.4",
     "@babel/preset-env": "^7.28.3",
+    "@rollup/plugin-node-resolve": "^16.0.3",
     "eslint": "^8.53.0",
     "jest": "^29.7.0",
-    "postcss": "^8.4.31"
+    "postcss": "^8.4.31",
+    "rollup": "^4.52.4"
   },
   "repository": {
     "type": "git",

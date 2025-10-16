@@ -5,6 +5,7 @@ module.exports = {
     jest: true
   },
   extends: ['eslint:recommended'],
+  ignorePatterns: ['dist/', 'node_modules/', 'coverage/'],
   parserOptions: {
     ecmaVersion: 2022,
     sourceType: 'module'

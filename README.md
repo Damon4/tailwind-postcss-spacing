@@ -9,6 +9,7 @@ PostCSS plugin that converts `px`/`rem` values to `calc(var(--spacing) * n)` exp
 - 🛡️ Preserves hairline borders (≤1px)
 - 📐 Handles multiple values
 - ⚙️ Property filtering support
+- 📦 Universal: ES Module, CommonJS & UMD builds included
 
 ## Installation
 
@@ -72,6 +73,21 @@ export default {
   ]
 }
 ```
+
+### CommonJS Usage
+
+```javascript
+// postcss.config.cjs
+const tailwindPostcssSpacing = require("tailwind-postcss-spacing");
+
+module.exports = {
+  plugins: [
+    tailwindPostcssSpacing({
+      base: 4,
+      varName: "--spacing",
+    }),
+  ],
+};
 
 ## License
 

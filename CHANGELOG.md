@@ -8,3 +8,4 @@
 - Configurable base unit and variable name
 - Preserve hairline borders option
 - Property filtering support
+- Universal builds: ES Module, CommonJS, UMD
