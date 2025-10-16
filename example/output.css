@@ -1,0 +1,6 @@
+/* Example output CSS */
+.component {
+  margin: calc(var(--spacing) * 4);
+  padding: calc(var(--spacing) * 2) calc(var(--spacing) * 3);
+  border: 1px solid #ccc;
+}

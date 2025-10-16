@@ -1,0 +1,58 @@
+{
+  "name": "tailwind-postcss-spacing",
+  "version": "1.0.0",
+  "description": "PostCSS plugin for scalable design systems - converts px/rem to calc() expressions with CSS custom properties. Perfect for Tailwind CSS projects requiring dynamic spacing control.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "keywords": [
+    "postcss",
+    "postcss-plugin",
+    "tailwind",
+    "tailwindcss",
+    "css",
+    "css-variables",
+    "custom-properties",
+    "px",
+    "rem", 
+    "spacing",
+    "calc",
+    "design-system",
+    "responsive",
+    "scalable",
+    "transform",
+    "conversion",
+    "utility"
+  ],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "peerDependencies": {
+    "postcss": "^8.0.0"
+  },
+  "dependencies": {
+    "postcss-value-parser": "^4.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.28.4",
+    "@babel/preset-env": "^7.28.3",
+    "eslint": "^8.53.0",
+    "jest": "^29.7.0",
+    "postcss": "^8.4.31"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Damon4/tailwind-postcss-spacing.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Damon4/tailwind-postcss-spacing/issues"
+  },
+  "homepage": "https://github.com/Damon4/tailwind-postcss-spacing#readme"
+}
