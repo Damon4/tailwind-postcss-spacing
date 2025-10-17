@@ -36,6 +36,7 @@ export default {
 .component {
   margin: 16px;
   padding: 8px 12px;
+  font-size: 1rem;
 }
 ```
 
@@ -45,6 +46,7 @@ export default {
 .component {
   margin: calc(var(--spacing) * 4);
   padding: calc(var(--spacing) * 2) calc(var(--spacing) * 3);
+  font-size: calc(var(--spacing) * 4);
 }
 ```
 
@@ -65,7 +67,8 @@ import tailwindPostcssSpacing from 'tailwind-postcss-spacing'
 export default {
   plugins: [
     tailwindPostcssSpacing({
-      base: 4,                    // Base unit (default: 4px)
+      base: 4,                    // Base unit in px (default: 4)
+      remBase: 16,                // How many px in 1rem (default: 16)
       varName: '--spacing',       // CSS variable name
       preserveHairline: true,     // Keep borders ≤1px unchanged
       ignoreProperties: []        // Properties to ignore

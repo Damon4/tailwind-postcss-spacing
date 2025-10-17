@@ -48,9 +48,10 @@ describe('tailwind-postcss-spacing', () => {
 
 	describe('rem conversion', () => {
 		it('converts rem values to calc expressions', async () => {
+			// 2rem * 16 (remBase) / 4 (base) = 8 units
 			await run(
 				'a { margin: 2rem; }',
-				'a { margin: calc(var(--spacing) * 2); }'
+				'a { margin: calc(var(--spacing) * 8); }'
 			)
 		})
 
@@ -62,9 +63,10 @@ describe('tailwind-postcss-spacing', () => {
 		})
 
 		it('handles fractional rem values', async () => {
+			// 1.5rem * 16 (remBase) / 4 (base) = 6 units
 			await run(
 				'a { padding: 1.5rem; }',
-				'a { padding: calc(var(--spacing) * 1.5); }'
+				'a { padding: calc(var(--spacing) * 6); }'
 			)
 		})
 	})
@@ -162,6 +164,15 @@ describe('tailwind-postcss-spacing', () => {
 				'a { margin-top: 8px; margin-left: 8px; padding: 8px; }',
 				'a { margin-top: 8px; margin-left: 8px; padding: calc(var(--spacing) * 2); }',
 				{ ignoreProperties: [/^margin-/] }
+			)
+		})
+
+		it('uses custom remBase', async () => {
+			// With remBase=10: 2rem * 10 / 4 (base) = 5 units
+			await run(
+				'a { margin: 2rem; }',
+				'a { margin: calc(var(--spacing) * 5); }',
+				{ remBase: 10 }
 			)
 		})
 	})

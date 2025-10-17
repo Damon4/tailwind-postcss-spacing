@@ -1,14 +1,16 @@
 // PostCSS plugin to transform `Npx` and `Nrem` into calc with CSS variables
 // Example: margin: 8px -> margin: calc(var(--spacing) * 2) when base is 4px
-// Example: margin: 2rem -> margin: calc(var(--spacing-rem) * 2) when remBase is 1rem
+// Example: margin: 2rem -> margin: calc(var(--spacing) * 8) when base is 4px and remBase is 16px
 // It keeps 0px/0rem as 0 and leaves values with css vars or functions untouched except plain pixel/rem numbers.
 
 import valueParser from 'postcss-value-parser'
 
 const BASE = 4 // 1 unit == 4px
+const REM_BASE = 16 // 1rem = 16px by default
 
 export default function tailwindPostcssSpacing(options = {}) {
 	const base = Number(options.base ?? BASE)
+	const remBase = Number(options.remBase ?? REM_BASE)
 	const varName = String(options.varName ?? '--spacing')
 	const preserveHairline = options.preserveHairline !== false // default true
 	const ignoreProps = Array.isArray(options.ignoreProperties) ? options.ignoreProperties : []
@@ -73,7 +75,10 @@ export default function tailwindPostcssSpacing(options = {}) {
 					const num = Number(numStr)
 					if (!Number.isFinite(num)) return
 
-					const units = num // rem is treated as 1 unit = 1rem
+					// Convert rem to px equivalent, then divide by base
+					// Example: 2rem with remBase=16 and base=4 → (2 * 16) / 4 = 8 units
+					const pxValue = num * remBase
+					const units = pxValue / base
 					const pretty = Number.isInteger(units)
 						? String(units)
 						: units.toFixed(4).replace(/0+$/, '').replace(/\.$/, '')
